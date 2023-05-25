@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.10.11 on win32)" generated="20230520 17:17:11.798" rpa="false" schemaversion="3">
+<suite id="s1" name="findingRobotCSV" source="C:\Users\pokem\OneDrive\Desktop\robot-demo\tests\browser\findingRobotCSV.robot">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>http://www.google.com</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230520 17:17:12.009" level="INFO">Opening browser 'Chrome' to base url 'http://www.google.com'.</msg>
+<status status="PASS" starttime="20230520 17:17:12.009" endtime="20230520 17:17:13.874"/>
+</kw>
+<test id="s1-t1" name="Searching &quot;robot&quot; on Google, the search result should contain Wikipedia" line="11">
+<kw name="Input Text" library="SeleniumLibrary" type="SETUP">
+<arg>id=APjFqb</arg>
+<arg>robot</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230520 17:17:13.876" level="INFO">Typing text 'robot' into text field 'id=APjFqb'.</msg>
+<status status="PASS" starttime="20230520 17:17:13.876" endtime="20230520 17:17:13.955"/>
+</kw>
+<kw name="Read Csv File To Associative" library="CSVLibrary">
+<var>${dict}</var>
+<arg>./data/data.csv</arg>
+<doc>Read CSV file and return its content as a Python list of dictionaries.</doc>
+<msg timestamp="20230520 17:17:13.956" level="INFO">${dict} = [{'WIKI': 'https://th.wikipedia.org/wiki/%E0%B8%AB%E0%B8%B8%E0%B9%88%E0%B8%99%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C', 'LONGDO': 'https://dict.longdo.com/search/ROBOT'}]</msg>
+<status status="PASS" starttime="20230520 17:17:13.955" endtime="20230520 17:17:13.956"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${dict}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230520 17:17:13.957" level="INFO">${dict} = [{'WIKI': 'https://th.wikipedia.org/wiki/%E0%B8%AB%E0%B8%B8%E0%B9%88%E0%B8%99%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C', 'LONGDO': 'https://dict.longdo.com/search/ROBOT'}]</msg>
+<status status="PASS" starttime="20230520 17:17:13.957" endtime="20230520 17:17:13.957"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id=APjFqb</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230520 17:17:13.958" level="INFO">Sending key(s) ('ENTER',) to id=APjFqb element.</msg>
+<msg timestamp="20230520 17:17:14.259" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20230520 17:17:14.259" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20230520 17:17:13.957" endtime="20230520 17:17:15.780"/>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<arg>${dict[0].WIKI}</arg>
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<msg timestamp="20230520 17:17:15.794" level="INFO">Current page contains link 'https://th.wikipedia.org/wiki/%E0%B8%AB%E0%B8%B8%E0%B9%88%E0%B8%99%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C'.</msg>
+<status status="PASS" starttime="20230520 17:17:15.780" endtime="20230520 17:17:15.794"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary" type="TEARDOWN">
+<arg>http://www.google.com</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230520 17:17:15.796" level="INFO">Opening url 'http://www.google.com'</msg>
+<status status="PASS" starttime="20230520 17:17:15.796" endtime="20230520 17:17:16.371"/>
+</kw>
+<status status="PASS" starttime="20230520 17:17:13.875" endtime="20230520 17:17:16.371"/>
+</test>
+<test id="s1-t2" name="Searching &quot;robot&quot; on Google, the search result should contain Longdo Directory" line="17">
+<kw name="Input Text" library="SeleniumLibrary" type="SETUP">
+<arg>id=APjFqb</arg>
+<arg>robot</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230520 17:17:16.373" level="INFO">Typing text 'robot' into text field 'id=APjFqb'.</msg>
+<status status="PASS" starttime="20230520 17:17:16.372" endtime="20230520 17:17:16.422"/>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<arg>id=APjFqb</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230520 17:17:16.423" level="INFO">Sending key(s) ('ENTER',) to id=APjFqb element.</msg>
+<msg timestamp="20230520 17:17:16.711" level="INFO">Pressing special key ENTER to element.</msg>
+<msg timestamp="20230520 17:17:16.711" level="INFO">Releasing special key ENTER.</msg>
+<status status="PASS" starttime="20230520 17:17:16.422" endtime="20230520 17:17:17.698"/>
+</kw>
+<kw name="Page Should Contain Link" library="SeleniumLibrary">
+<arg>${dict[0].LONGDO}</arg>
+<doc>Verifies link identified by ``locator`` is found from current page.</doc>
+<msg timestamp="20230520 17:17:17.712" level="INFO">Current page contains link 'https://dict.longdo.com/search/ROBOT'.</msg>
+<status status="PASS" starttime="20230520 17:17:17.699" endtime="20230520 17:17:17.712"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary" type="TEARDOWN">
+<arg>http://www.google.com</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20230520 17:17:17.712" level="INFO">Opening url 'http://www.google.com'</msg>
+<status status="PASS" starttime="20230520 17:17:17.712" endtime="20230520 17:17:18.117"/>
+</kw>
+<status status="PASS" starttime="20230520 17:17:16.372" endtime="20230520 17:17:18.117"/>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230520 17:17:18.118" endtime="20230520 17:17:20.199"/>
+</kw>
+<status status="PASS" starttime="20230520 17:17:11.800" endtime="20230520 17:17:20.199"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="findingRobotCSV">findingRobotCSV</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
